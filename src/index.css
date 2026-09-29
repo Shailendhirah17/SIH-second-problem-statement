@@ -1,0 +1,225 @@
+:root {
+  --bg-primary: #0a0e11;
+  --bg-surface: #12181d;
+  --bg-card: #182228;
+  --bg-card-hover: #1e2a32;
+  --bg-glass: rgba(24, 34, 40, 0.75);
+  
+  --copper-primary: #c86a3b;
+  --copper-bright: #e77d49;
+  --copper-glow: rgba(200, 106, 59, 0.25);
+  
+  --saffron-primary: #e8a638;
+  --saffron-bright: #f5b84a;
+  
+  --herbal-primary: #227c6c;
+  --herbal-bright: #2fa893;
+  --herbal-glow: rgba(47, 168, 147, 0.22);
+  
+  --oled-cyan: #38bdf8;
+  --oled-amber: #fbbf24;
+  --oled-green: #34d399;
+  --oled-red: #f87171;
+
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-bright: rgba(255, 255, 255, 0.16);
+  --border-copper: rgba(200, 106, 59, 0.4);
+
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --shadow-elevated: 0 20px 40px -15px rgba(0, 0, 0, 0.65), 0 0 20px rgba(200, 106, 59, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(ellipse at 15% 0%, rgba(200, 106, 59, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 100%, rgba(34, 124, 108, 0.14) 0%, transparent 60%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Custom modern scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #25333d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--copper-primary);
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass card utility */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.glass-panel:hover {
+  border-color: var(--border-bright);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-copper {
+  background: rgba(200, 106, 59, 0.18);
+  color: #ff9d6e;
+  border: 1px solid rgba(200, 106, 59, 0.4);
+}
+
+.badge-herbal {
+  background: rgba(34, 124, 108, 0.2);
+  color: #5eead4;
+  border: 1px solid rgba(34, 124, 108, 0.45);
+}
+
+.badge-saffron {
+  background: rgba(232, 166, 56, 0.18);
+  color: #fde047;
+  border: 1px solid rgba(232, 166, 56, 0.4);
+}
+
+.badge-cyan {
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes steamRise {
+  0% { transform: translateY(0) scaleX(0.8); opacity: 0.8; }
+  50% { transform: translateY(-16px) scaleX(1.1); opacity: 0.4; }
+  100% { transform: translateY(-32px) scaleX(1.3); opacity: 0; }
+}
+
+@keyframes bubblePop {
+  0% { transform: translateY(20px) scale(0.3); opacity: 0; }
+  40% { opacity: 0.9; }
+  100% { transform: translateY(-10px) scale(1.2); opacity: 0; }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes flowDash {
+  to { stroke-dashoffset: -20; }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 3s linear infinite;
+}
+
+.animate-steam-1 {
+  animation: steamRise 2.2s infinite ease-out;
+}
+
+.animate-steam-2 {
+  animation: steamRise 2.6s infinite ease-out 0.8s;
+}
+
+.animate-steam-3 {
+  animation: steamRise 2.4s infinite ease-out 1.4s;
+}
+
+/* Countertop Bezel Wrapper */
+.appliance-frame {
+  background: linear-gradient(145deg, #242c33, #151a1e);
+  border: 2px solid #33414d;
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.75),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+  padding: 18px;
+  position: relative;
+}
+
+.appliance-frame::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 4px;
+  background: #33414d;
+  border-radius: 2px;
+}
+
+/* Touchscreen Screen Display Inside Frame */
+.screen-display {
+  background: #0d1217;
+  border-radius: var(--radius-lg);
+  border: 1px solid #1e2830;
+  overflow: hidden;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8);
+}
